@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Student } from './models/Students';
+import { StudentsService } from './services/students.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Students.UI';
+  students: Student[]=[];
+
+  constructor(private studentsService : StudentsService){}
+
+  ngOnInit() : void{
+    this.students = this.studentsService.getStudents();
+    console.log(this.students);
+  }
+
 }
